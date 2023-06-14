@@ -1,0 +1,46 @@
+import java.util.Arrays;
+import java.util.Scanner;  
+
+
+public class FindMax {
+
+ public static int maximumWeightDifference(int array[],int k) {
+   // find the lenght of array
+   int n = array.length;
+   Arrays.sort(array);
+
+   int sumOfAllArray=0, sumOfKelement=0, sumOfK_NElement=0;
+
+   for(int i=0; i<n; i++) {
+       sumOfAllArray += array[i];
+   }
+   for(int i=0; i<k; i++) {
+       sumOfKelement += array[i];
+   }
+  for(int i=k; i<n; i++) {
+       sumOfK_NElement += array[i];
+   }
+
+  return Math.max(Math.abs(sumOfKelement - (sumOfAllArray - sumOfKelement)), Math.abs(sumOfK_NElement - (sumOfAllArray-sumOfK_NElement)));
+}
+
+
+ public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter who many Element you want to store in array");
+        int size = sc.nextInt();
+        System.out.println("Enter elemtnt");
+        int array[] = new int[size];
+        for(int i=0; i<size; i++) {
+        	System.out.println("Enter elemtnt at index  " +i);	
+          array[i] = sc.nextInt();  
+        }
+        System.out.println("Enter how many item chef give his son");
+        int k = sc.nextInt();
+        // call the maximumWeightDifference function
+        System.out.print(maximumWeightDifference(array, k));
+             
+    }
+
+}
